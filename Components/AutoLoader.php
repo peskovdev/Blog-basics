@@ -1,6 +1,5 @@
 <?php
-
-
+namespace Components;
     class AutoLoader
     {
         public static function spl_autoload_register($class)

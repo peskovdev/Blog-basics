@@ -44,7 +44,7 @@
         public static function make_upload($file){	
             // формируем уникальное имя картинки: случайное число и name
             $name = mt_rand(0, 10000) . $file['name'];
-            move_uploaded_file($file['tmp_name'],'Template/images/'.$name);
+            move_uploaded_file($file['tmp_name'],'/Template/images/'.$name);
             return $name;
         }
         

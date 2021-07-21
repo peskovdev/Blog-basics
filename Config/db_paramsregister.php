@@ -2,9 +2,9 @@
 
 return array(
 	'host' => 'localhost', // адрес сервера 
-	'database' => 'learnproject', // имя базы данных
+	'database' => 'componentPrjDb', // имя базы данных
 	'user' => 'root', // имя пользователя
-	'password' => 'root', // пароль
+	'password' => '', // пароль
 	'charset' => 'utf8'
 );
 

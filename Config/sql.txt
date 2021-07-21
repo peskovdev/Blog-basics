@@ -1,0 +1,162 @@
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- База данных: `componentPrjDb`
+--
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `answers`
+--
+
+CREATE TABLE `answers` (
+  `id` int NOT NULL,
+  `body` varchar(1000) NOT NULL,
+  `user_login` varchar(90) NOT NULL,
+  `article_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `articles`
+--
+
+CREATE TABLE `articles` (
+  `id` int NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `imagePath` varchar(90) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `body` varchar(1000) NOT NULL,
+  `user_login` varchar(90) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `login` varchar(90) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `email` varchar(90) NOT NULL,
+  `nickName` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `rank` int NOT NULL DEFAULT '10'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `article_id` (`article_id`),
+  ADD KEY `answers_ibfk_1` (`user_login`);
+
+--
+-- Индексы таблицы `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_login` (`user_login`);
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `login` (`login`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`user_login`) REFERENCES `users` (`login`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `answers_ibfk_2` FOREIGN KEY (`article_id`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+--
+-- Ограничения внешнего ключа таблицы `articles`
+--
+ALTER TABLE `articles`
+  ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`user_login`) REFERENCES `users` (`login`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+
+
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+--
+-- База данных: `componentPrjDbShop`
+--
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `news`
+--
+
+CREATE TABLE `news` (
+  `id` int NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `date` varchar(200) NOT NULL,
+  `short_content` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `date`, `short_content`) VALUES
+(5, '4 - Телефон Lenovo', '11, 11, 2020', 'new version of the world'),
+(6, '5 - Телефон', '11, 11, 2020', 'Крутяк'),
+(7, '6 - Телефон', '11, 11, 2020', 'Крутякtruetruetruetruetruetruetruetruetruetrue\r\nЧто сказать, покупайте!'),
+(8, '7 - Телефон', '11, 11, 2020', 'Пикселей буквально мельйон');
+
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;

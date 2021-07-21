@@ -9,7 +9,7 @@
 				if($_SESSION['user']['rank'] > 90)
 				{				
 					$users = array();
-					$users = \Models\User::getUsers();			
+					$users = \Models\User::getUsers();
 					require_once(ROOT.'/Views/Account/index.php');
 					return true;
 				}
@@ -153,7 +153,7 @@
 					$errors[] = "Повторный пароль введен не верно!";
 				}
 
-				if(User::getUserByLogin($data['login'])) {
+				if(\Models\User::getUserByLogin($data['login'])) {
 
 				    $errors[] = "Введенный логин занят";
 			    }

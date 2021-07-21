@@ -30,7 +30,7 @@ if(isset($_POST['array'])){
 	for($i = 0; $i<count($array); $i++){
 		$maxArray = $minArray;
 	 	for($j = 0; $j<count($array); $j++)
-	 	{ 		
+	 	{
 			if($maxArray < $arrayCopy[$j])
 			{
 				$maxArray = $arrayCopy[$j];

@@ -2,7 +2,6 @@
 namespace Components;
 class Db
 {	
-
 	/*
 	public static function getConnectionRegister()
 	{
@@ -17,7 +16,7 @@ class Db
 	*/
 	public static function getConnectionRegister()
 	{
-		$paramsPath = ROOT.'/config/db_paramsregister.php';
+		$paramsPath = ROOT.'/Config/db_paramsregister.php';
 		$params = include($paramsPath);
 
 		$dsn = "mysql:host={$params['host']}; dbname={$params['database']}; charset={$params['charset']}";
@@ -34,7 +33,7 @@ class Db
 
 	public static function getConnectionMagaz()
 	{
-		$paramsPath = ROOT.'/config/db_paramsmagaz.php';
+		$paramsPath = ROOT.'/Config/db_paramsmagaz.php';
 		$params = include($paramsPath);
 
 		$dsn = "mysql:host={$params['host']}; dbname={$params['database']}; charset={$params['charset']}";

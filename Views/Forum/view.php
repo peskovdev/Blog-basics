@@ -1,13 +1,13 @@
 <?php $_SESSION['title'] = $article['title']; ?>
 <!-- Отображение статьи -->
 <br>
-<img class="artcilePhoto" src="<?php echo PHOTO_ROOT.$article['imagePath']; ?>" alt="тут должна была быть фотография"><br>
+<img class="artcilePhoto" src="<?= PHOTO_ROOT.$article['imagePath']; ?>" alt="тут должна была быть фотография"><br>
 <p class="badge badge-secondary">Автор статьи: <?php echo $article['user_login']; ?>.</p>
 <h1 class=""><?php echo $article['title']; ?></h1>
 
 <p class="text-justify"><?php echo $article['body']; ?>.</p>
 <br>
-<a href="/forum/<? echo $page; ?>"><p class="btn btn-outline-secondary">Вернуться назад</p></a>
+<a href="/forum/<?= $page; ?>"><p class="btn btn-outline-secondary">Вернуться назад</p></a>
 <hr>
 
 <!-- Отображение комментариев -->
